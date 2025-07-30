@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>@yield('title', 'mytitle')</title>
+    <title>@yield('title', 'loginpage')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -21,15 +21,11 @@
 </head>
 
 <body>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <form action="{{ route('tamiltext') }}" method="post">
+        @csrf
+        <input type="text" name="text">
+        <input type="submit">
+    </form>
     {{-- headers --}}
     @include('layouts.header')
     {{-- @include('layouts.loginLayout') --}}

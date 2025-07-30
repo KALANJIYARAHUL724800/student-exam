@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
-
-use Closure;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Exception;
+use Closure;
 use Symfony\Component\HttpFoundation\Response;
-
-class JwtMiddleware
+use Auth;
+class CandidateMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,11 +14,12 @@ class JwtMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        try {
-            JWTAuth::parseToken()->authenticate();
-        } catch (Exception $e) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+
+        if (Auth::check()) {
+            if (Auth::user()->usertype == false) {
+                return $next($request);
+            }
         }
-        return $next($request);
+        return redirect('/admin');
     }
 }

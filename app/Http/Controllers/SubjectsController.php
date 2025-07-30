@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Services\SubjectsService;
+use Illuminate\Http\Request;
 
 class SubjectsController extends Controller
 {
-    protected $subjects_service;
-    public function __construct(SubjectsService $subjects)
+    protected $SubjectsService;
+    public function __construct(SubjectsService $SubjectsService)
     {
-        $this->subjects_service = $subjects;
+        $this->SubjectsService = $SubjectsService;
     }
-    public function getSubjects($id)
+    public function getSubjects(Request $request)
     {
-        $subjects = $this->subjects_service->getSubjectsService($id);
+        $subjects = $this->SubjectsService->getSubjectsService($request->exam_id);
         return response()->json($subjects);
     }
 }

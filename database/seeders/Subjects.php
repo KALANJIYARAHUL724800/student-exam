@@ -15,132 +15,132 @@ class Subjects extends Seeder
     {
         $subjects = [
             [
-                "class_id"=>1,
-                "exam_id"=>1,
-                "subject_name"=>"Tamil"
+                "class_id" => 1,
+                "exam_id" => 1,
+                "subject_name" => "Tamil"
             ],
             [
-                "class_id"=>1,
-                "exam_id"=>1,
-                "subject_name"=>"English"
+                "class_id" => 1,
+                "exam_id" => 1,
+                "subject_name" => "English"
             ],
             [
-                "class_id"=>1,
-                "exam_id"=>2,
-                "subject_name"=>"Tamil"
+                "class_id" => 1,
+                "exam_id" => 2,
+                "subject_name" => "Tamil"
             ],
-                        [
-                "class_id"=>1,
-                "exam_id"=>2,
-                "subject_name"=>"English"
+            [
+                "class_id" => 1,
+                "exam_id" => 2,
+                "subject_name" => "English"
             ],
-                        [
-                "class_id"=>1,
-                "exam_id"=>2,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 1,
+                "exam_id" => 2,
+                "subject_name" => "Maths"
             ],
-                        [
-                "class_id"=>1,
-                "exam_id"=>3,
-                "subject_name"=>"Tamil"
+            [
+                "class_id" => 1,
+                "exam_id" => 3,
+                "subject_name" => "Tamil"
             ],
-                        [
-                "class_id"=>1,
-                "exam_id"=>3,
-                "subject_name"=>"English"
+            [
+                "class_id" => 1,
+                "exam_id" => 3,
+                "subject_name" => "English"
             ],
-                        [
-                "class_id"=>1,
-                "exam_id"=>3,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 1,
+                "exam_id" => 3,
+                "subject_name" => "Maths"
             ],
-                        [
-                "class_id"=>2,
-                "exam_id"=>1,
-                "subject_name"=>"Tamil"
+            [
+                "class_id" => 2,
+                "exam_id" => 1,
+                "subject_name" => "Tamil"
             ],
-                        [
-                "class_id"=>2,
-                "exam_id"=>1,
-                "subject_name"=>"English"
+            [
+                "class_id" => 2,
+                "exam_id" => 1,
+                "subject_name" => "English"
             ],
-                        [
-                "class_id"=>2,
-                "exam_id"=>1,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 2,
+                "exam_id" => 1,
+                "subject_name" => "Maths"
             ],
-                        [
-                "class_id"=>2,
-                "exam_id"=>2,
-                "subject_name"=>"Tamil"
+            [
+                "class_id" => 2,
+                "exam_id" => 2,
+                "subject_name" => "Tamil"
             ],
-                      [
-                "class_id"=>2,
-                "exam_id"=>2,
-                "subject_name"=>"English"
+            [
+                "class_id" => 2,
+                "exam_id" => 2,
+                "subject_name" => "English"
             ],
-                      [
-                "class_id"=>2,
-                "exam_id"=>2,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 2,
+                "exam_id" => 2,
+                "subject_name" => "Maths"
             ],
-                      [
-                "class_id"=>2,
-                "exam_id"=>2,
-                "subject_name"=>"Science"
+            [
+                "class_id" => 2,
+                "exam_id" => 2,
+                "subject_name" => "Science"
             ],
-                      [
-                "class_id"=>2,
-                "exam_id"=>3,
-                "subject_name"=>"Tamil"
+            [
+                "class_id" => 2,
+                "exam_id" => 3,
+                "subject_name" => "Tamil"
             ],
-                    [
-                "class_id"=>2,
-                "exam_id"=>3,
-                "subject_name"=>"English"
+            [
+                "class_id" => 2,
+                "exam_id" => 3,
+                "subject_name" => "English"
             ],
-                    [
-                "class_id"=>2,
-                "exam_id"=>3,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 2,
+                "exam_id" => 3,
+                "subject_name" => "Maths"
             ],
-                    [
-                "class_id"=>2,
-                "exam_id"=>3,
-                "subject_name"=>"Science"
+            [
+                "class_id" => 2,
+                "exam_id" => 3,
+                "subject_name" => "Science"
             ],
-                    [
-                "class_id"=>3,
-                "exam_id"=>1,
-                "subject_name"=>"Tamil"
+            [
+                "class_id" => 3,
+                "exam_id" => 1,
+                "subject_name" => "Tamil"
             ],
-                  [
-                "class_id"=>3,
-                "exam_id"=>1,
-                "subject_name"=>"English"
+            [
+                "class_id" => 3,
+                "exam_id" => 1,
+                "subject_name" => "English"
             ],
-                  [
-                "class_id"=>3,
-                "exam_id"=>1,
-                "subject_name"=>"Science"
+            [
+                "class_id" => 3,
+                "exam_id" => 1,
+                "subject_name" => "Science"
             ],
-                  [
-                "class_id"=>3,
-                "exam_id"=>2,
-                "subject_name"=>"Computer"
+            [
+                "class_id" => 3,
+                "exam_id" => 2,
+                "subject_name" => "Computer"
             ],
-                  [
-                "class_id"=>3,
-                "exam_id"=>2,
-                "subject_name"=>"Maths"
+            [
+                "class_id" => 3,
+                "exam_id" => 2,
+                "subject_name" => "Maths"
             ],
-                  [
-                "class_id"=>3,
-                "exam_id"=>2,
-                "subject_name"=>"Social Science"
+            [
+                "class_id" => 3,
+                "exam_id" => 2,
+                "subject_name" => "Social Science"
             ],
         ];
-        foreach($subjects as $subject){
+        foreach ($subjects as $subject) {
             ModelsSubjects::create($subject);
         }
     }

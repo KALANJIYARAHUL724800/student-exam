@@ -1,34 +1,5 @@
-{{-- <!DOCTYPE html>
-<html lang="ta">
-<head>
-    <meta charset="UTF-8">
-    <title>Question Paper</title>
-</head>
-<body>
-    <h1><strong>Question Paper</strong></h1>
-    <form action="{{route('verify')}}" method="post">
-        @csrf
-     
-    @php
-        $grouped = $question->groupBy('id');
-        $number = 1;
-    @endphp
-    @foreach ($grouped as $qid => $items)
-        @php
-        // dd($items);
-        @endphp
-        <p><b>{{ $number++ }}. {{ $items[0]->question_text }}</b></p>
-        @foreach ($items as $opt)
-            <input type="radio" name="{{$qid}}" value="{{$opt->option_id}}" required>{{ $opt->options }}</>
-        @endforeach
-    @endforeach
-    <br><br><br>
-    <input type="submit">
-</form>
-</body>
-</html> --}}
 <!doctype html>
-<html lang="en">
+<html lang="tl">
 
 <head>
     <meta charset="utf-8">

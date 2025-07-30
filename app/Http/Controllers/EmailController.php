@@ -4,20 +4,15 @@ namespace App\Http\Controllers;
 use App\Services\EmailService;
 class EmailController extends Controller
 {
-    protected $emailService;
-    public function __construct(EmailService $emailService)
+    protected $EmailService;
+    public function __construct(EmailService $EmailService)
     {
-        $this->emailService = $emailService;
-    }
-    public function emailsent()
-    {
-        //$this->emailService->emailsent();
-        return redirect()->route('finish-exam');
+        $this->EmailService = $EmailService;
     }
     public function complete()
     {
-        $results = $this->emailService->complete_exam();
-        $this->emailService->emailsent($results);
+        $results = $this->EmailService->complete_exam();
+        $this->EmailService->emailsent($results);
         return view('complete', compact('results'), ['pageName' => 'Results Page']);
     }
 }

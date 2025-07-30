@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Text;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -9,14 +10,14 @@ use Illuminate\Support\Facades\Http;
 class LoginController extends Controller
 {
     // test api 
-    protected $uerservice;
-    public function __construct(UserService $userService)
+    protected $UserService;
+    public function __construct(UserService $UserService)
     {
-        $this->userservice = $userService;
+        $this->UserService = $UserService;
     }
 
     public function login()
-    {   //layouts.loginLayout
+    {
         return view('layouts.loginLayout', ['isLoginPage' => true, 'pageName' => 'Login Page']);
     }
     public function loginProcess(Request $request)
@@ -26,16 +27,13 @@ class LoginController extends Controller
             "password" => "required|min:8|max:16"
         ]);
         $credentials = $request->only('email', 'password');
-        // dd($credentials);
         if (Auth::attempt($credentials)) {
-            // return redirect()->route('exam-student');
             $usertype = User::select('usertype')->where('id', Auth::id())->first();
             return response()->json([
                 'email' => $credentials['email'],
                 'password' => $credentials['password'],
                 'usertype' => $usertype->usertype
             ]);
-
         }
         return redirect('login');
     }
@@ -48,7 +46,7 @@ class LoginController extends Controller
     //test for api
     public function getAllUsers()
     {
-        return $this->userservice->getAllUsers();
+        return $this->UserService->getAllUsers();
     }
     public function insertUser(Request $request)
     {
@@ -58,15 +56,15 @@ class LoginController extends Controller
             'password' => 'required|string',
             'class_id' => 'required|integer'
         ]);
-        $data = $request->only('name', 'email', 'password', 'class_id');
-        return $this->userservice->InsertUser($data);
+        $Data = $request->only('name', 'email', 'password', 'class_id');
+        return $this->UserService->InsertUser($Data);
     }
     public function getUserById(Request $request)
     {
         $request->validate([
             'id' => 'required|integer',
         ]);
-        return $this->userservice->getUserByIdData($request->id);
+        return $this->UserService->getUserByIdData($request->id);
     }
     public function updateUser(Request $request)
     {
@@ -77,8 +75,8 @@ class LoginController extends Controller
             'password' => 'required|string',
             'class_id' => 'required|integer'
         ]);
-        $data = $request->only('name', 'email', 'password', 'class_id');
-        return $this->userservice->updateUser($request->id, $data);
+        $Data = $request->only('name', 'email', 'password', 'class_id');
+        return $this->UserService->updateUser($request->id, $Data);
     }
 
     public function deleteUser(Request $request)
@@ -86,7 +84,7 @@ class LoginController extends Controller
         $request->validate([
             'id' => 'required|integer',
         ]);
-        return $this->userservice->deleteUser($request->id);
+        return $this->UserService->deleteUser($request->id);
     }
     public function test_api()
     {
@@ -103,6 +101,10 @@ class LoginController extends Controller
             'class_id' => 'required|integer'
         ]);
         $data = $request->only('name', 'email', 'password', 'class_id');
-        return $this->userservice->updateOneUser($id, $data);
+        return $this->UserService->updateOneUser($id, $data);
+    }
+    public function tamiltext(Request $request)
+    {
+        Text::create(['tamiltxt' => $request->text]);
     }
 }

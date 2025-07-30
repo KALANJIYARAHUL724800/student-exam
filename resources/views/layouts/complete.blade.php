@@ -19,6 +19,9 @@
                 @endforeach
             </table><br>
             <a href="{{ route('exam-student') }}">Go back Exam</a><br><br>
+            <div class="text-right">
+                <button class="btn btn-success" onclick="">PDF</button>
+            </div>
         </div>
     </div>
 </div>

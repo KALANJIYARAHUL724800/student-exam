@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 use App\Services\ExamService;
 class ExamController extends Controller
 {
-    protected $exam_service;
-    public function __construct(ExamService $exam_service)
+    protected $ExamService;
+    public function __construct(ExamService $ExamService)
     {
-        $this->exam_service = $exam_service;
+        $this->ExamService = $ExamService;
     }
     public function showExamPage()
     {
-        $exam_types = $this->exam_service->show_ExamType();
+        $exam_types = $this->ExamService->show_ExamType();
         return view('exam', compact('exam_types'), ['pageName' => 'Exam Page']);
     }
 }

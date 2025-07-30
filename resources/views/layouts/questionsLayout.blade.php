@@ -7,11 +7,12 @@
                         @csrf
                         @php
                             $grouped = $question->groupBy('id');
+                            $number = 1;
                         @endphp
                         @foreach ($grouped as $qid => $items)
                             <tr>
                                 <th>
-                                    <p><b id="q">{{ $qid }}. {{ $items->first()->question_text }}</b>
+                                    <p><b id="q">{{ $number++ }}. {{ $items->first()->question_text }}</b>
                                     </p>
                                 </th>
                             </tr>
@@ -35,10 +36,3 @@
         </div>
     </div>
     </div>
-    <script>
-        var ques = document.querySelectorAll('#q');
-        ques.forEach((res, index) => {
-            console.log(index, res);
-
-        });
-    </script>

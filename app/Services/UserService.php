@@ -8,44 +8,44 @@ class UserService
     {
         return User::where('active_flag', 1)->get(['name', 'email', 'class_id', 'password']);
     }
-    public function InsertUser($data)
+    public function InsertUser($Data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'class_id' => $data['class_id']
+            'name' => $Data['name'],
+            'email' => $Data['email'],
+            'password' => Hash::make($Data['password']),
+            'class_id' => $Data['class_id']
         ]);
     }
-    public function getUserByIdData($id)
+    public function getUserByIdData($Id)
     {
-        return User::find($id);
+        return User::find($Id);
     }
-    public function updateUser($id, $data)
+    public function updateUser($Id, $Data)
     {
-        $user = User::find($id);
-        if (!empty($user)) {
-            $user->update($data);
-            return $user;
+        $User = User::find($Id);
+        if (!empty($User)) {
+            $User->update($Data);
+            return $User;
         }
         return null;
     }
-    public function deleteUser($id)
+    public function deleteUser($Id)
     {
-        $user = User::find($id);
-        if (!empty($user)) {
-            $user->delete();
+        $User = User::find($Id);
+        if (!empty($User)) {
+            $User->delete();
 
             return true;
         }
         return false;
     }
-    public function updateOneUser($id, $data)
+    public function updateOneUser($Id, $Data)
     {
-        $user = User::find($id);
-        if (!empty($user)) {
-            $user->update($data);
-            return $user;
+        $User = User::find($Id);
+        if (!empty($User)) {
+            $User->update($Data);
+            return $User;
         }
         return null;
     }

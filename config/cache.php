@@ -84,6 +84,7 @@ return [
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
             'endpoint' => env('DYNAMODB_ENDPOINT'),
+            'regio' => env('MOHAN_ENDPOINT'),
         ],
 
         'octane' => [

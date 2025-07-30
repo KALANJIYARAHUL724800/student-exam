@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
 
-    protected $exam_service;
-    public function __construct(ExamService $exam_service)
+    protected $ExamService;
+    public function __construct(ExamService $ExamService)
     {
-        $this->exam_service = $exam_service;
+        $this->ExamService = $ExamService;
     }
     public function admin()
     {
-        $exam_types = $this->exam_service->show_ExamType();
+        $exam_types = $this->ExamService->show_ExamType();
         return view('superadmin', compact('exam_types'), ['pageName' => 'Dashboard']);
     }
     public function class_name()
@@ -29,13 +29,13 @@ class AdminController extends Controller
     }
     public function filter_datas(Request $request)
     {
-        $data = $this->exam_service->getAllDatas($request);
+        $data = $this->ExamService->getAllDatas($request);
         return response()->json($data);
 
     }
     public function getSubjects(Request $request)
     {
-        $res = $this->exam_service->getExamSubjects($request);
+        $res = $this->ExamService->getExamSubjects($request);
         return response()->json($res);
     }
 }

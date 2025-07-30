@@ -6,19 +6,19 @@ use App\Services\QuestionService;
 use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
-    protected $questionsService;
-    public function __construct(QuestionService $questionsService)
+    protected $QuestionsService;
+    public function __construct(QuestionService $QuestionsService)
     {
-        $this->questionsService = $questionsService;
+        $this->QuestionsService = $QuestionsService;
     }
     public function getQustions(Request $request)
     {
-        $question = $this->questionsService->getQuestions($request);
+        $question = $this->QuestionsService->getQuestions($request);
         return view('questions', compact('question'), ['pageName' => 'Question Page']);
     }
     public function verification(Request $request)
     {
-        $this->questionsService->questionVerify($request);
+        $this->QuestionsService->questionVerify($request);
         return redirect()->route('finish-exam');
     }
 }

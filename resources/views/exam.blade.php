@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Exam</title>
 
@@ -25,7 +26,7 @@
 
     @include('layouts.header')
     @include('layouts.examLayout')
-
+    <p id="error" style="color: red"></p>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -33,15 +34,23 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
     </script>
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(document).ready(function() {
             $('#select2').select2();
             $('#exam_id').on('change', function() {
-                let examId = $(this).val();
+                var examId = $(this).val();
                 console.log(examId);
                 $.ajax({
-                    url: '/subjects/' + examId,
-                    type: 'GET',
+                    url: '{{ route('subjects') }}',
+                    type: 'POST',
                     dataType: 'json',
+                    data: {
+                        exam_id: examId
+                    },
                     success: function(response) {
                         console.log(response);
                         $('#subjects').empty().append(
@@ -52,9 +61,8 @@
                         });
                         $('#subjects').select2();
                     },
-                    error: function() {
-                        $('#subjects').empty().append(
-                            '<option>Error loading subjects</option>');
+                    error: function(xhr, status, error) {
+                       $('#error').empty().append(error);
                     }
                 });
             });

@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 well">
+                <p id="error" style="color: red"></p>
                 <h2 class="text-center">Login</h2>
                 <table class="table table-borderedless">
                     <form action="{{ route('login-progress') }}" method="post">
@@ -41,11 +42,10 @@
         </div>
     </div>
     <script>
-        function popup() {
+        function popup(event) {
             event.preventDefault();
             var email = $('#email').val();
             var password = $('#password').val();
-            // console.log(email, password);
 
             $.ajax({
                 url: "{{ route('login-progress') }}",
@@ -74,7 +74,7 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.log(error);
+                    $('#error').empty().append(error);
 
                 }
             });

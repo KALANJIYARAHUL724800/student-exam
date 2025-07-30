@@ -24,7 +24,6 @@
         }
     </style>
 </head>
-<!-- background="{{ asset('images/dashboard.png') }}" style="background-repeat: no-repeat; background-size: cover;" -->
 
 <body>
     @include('layouts.header')
@@ -33,7 +32,7 @@
             <div class="text-center well">
                 <form>
                     @csrf
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf" />
+                    {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf" /> --}}
                     Start Date :<input type="date" name="sdate" id="sdate" required> End Date : <input
                         type="date" name="edate" id="edate" required>
                     <!-- Exam Type -->
@@ -66,7 +65,7 @@
             </ul>
         </div>
     @endif
-    <div class="container">
+    {{-- <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="div" style="display: none;">
@@ -84,7 +83,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- Students list -->
@@ -162,7 +161,7 @@
             // subject found
             $('#class_id').on('change', function() {
                 $.ajax({
-                    url: '/getsubjects/subjects',
+                    url: 'getsubjects/subjects',
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -186,12 +185,11 @@
             });
         });
 
-
         function showpage(event) {
             event.preventDefault();
             var sdate = $('#sdate').val();
             var edate = $('#edate').val();
-            if (new Date(sdate) < new Date(edate)) {
+            if (new Date(sdate) <= new Date(edate)) {
                 $.ajax({
                     url: 'filter/datas',
                     type: 'POST',
@@ -205,7 +203,8 @@
                     },
                     success: function(response) {
                         console.log(response);
-                        var table = document.getElementById("table");
+                        // var table = document.getElementById("table");
+                        var table = $('#table');
                         document.querySelector(".div").style.display = "block";
                         $('#table tr:not(:first)').remove();
                         $.each(response, function(index, res) {

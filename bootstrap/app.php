@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'authmiddleware' => AuthenticateMiddleware::class,
             'superadmin' => SuperAdminMiddleware::class,
             'jwt' => JwtMiddleware::class,
+            'candidate' => \App\Http\Middleware\CandidateMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTFactory;
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -49,10 +50,29 @@ class AuthController extends Controller
 
         return response()->json([
             'token' => $token,
-            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'expires_in' => auth('api')->factory()->getTTL() * 5,
         ]);
     }
 
+    public function staticApiKey(Request $request)
+    {
+        $providedKey = $request->header('token');
+        if ($providedKey != env('STATIC_API_KEY')) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        $customClaims = [
+            'sub' => 'Test',
+            'name' => 'Static API User'
+        ];
+        JWTAuth::factory()->setTTL(5);
+        $payload = JWTFactory::customClaims($customClaims)->make();
+        $token = JWTAuth::encode($payload)->get();
+
+        return response()->json([
+            'token' => $token,
+            'expires_in' => auth('api')->factory()->getTTL(),
+        ]);
+    }
     public function logout()
     {
         try {
